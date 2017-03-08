@@ -1,35 +1,38 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { browserHistory, Router, Route, Link } from 'react-router'
+import {observable} from "mobx"
+import {observer} from "mobx-react"
 
 import Slider from './slider.jsx';
 import Display from './display.jsx';
 import shows from '../shows.json';
 
+@observer
 class App extends React.Component {
+  @observable currentInd = 0;
+
   constructor(props) {
     super(props);
-    this.updatePhoto = this.updatePhoto.bind(this);
-  	this.state = {
-  		currentIndex: 0
-  	}
   }
 
   componentWillMount() {
     if (this.props.location.query.id) {
-      this.setState({currentIndex: this.props.location.query.id - 1});
+      this.currentInd = this.props.location.query.id - 1;
     }
   }
 
-  updatePhoto(index) {
-    this.setState({currentIndex: index});
+  componentWillReceiveProps(props) {
+    if (props.location.query.id) {
+      this.currentInd = props.location.query.id - 1;
+    }
   }
 
   render () {
     return (
       <div>
-        <Slider photos={shows} updatePhoto={this.updatePhoto} />
-        <Display currentPhoto={shows[this.state.currentIndex]} />
+        <Slider photos={shows} />
+        <Display currentPhoto={shows[this.currentInd]} />
       </div>
     )
   }

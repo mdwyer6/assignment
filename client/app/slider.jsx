@@ -5,7 +5,7 @@ class Slider extends React.Component {
   render () {
     return (
       <nav className='slider'>
-        {this.props.photos.map((arg, index) => (<Link to={`/?id=${index + 1}`} key={index}><img src={`..${arg.product_image_url}`} onClick={() => {this.props.updatePhoto(index)}} key={index} alt='' /></Link>))}
+        {this.props.photos.map((arg, index) => (<Link to={`/?id=${index + 1}`} key={index}><img src={`..${arg.product_image_url}`} key={index} alt='' /></Link>))}
       </nav>
     )
   }

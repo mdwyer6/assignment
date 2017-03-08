@@ -10,12 +10,16 @@ var config = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
-  module : {
-    loaders : [
+  module: {
+    loaders: [
       {
-        test : /\.jsx?/,
-        include : APP_DIR,
-        loader : 'babel-loader'
+        test: /\.jsx?/,
+        include: APP_DIR,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react', 'stage-0'],
+          plugins: ['transform-decorators-legacy', 'transform-class-properties']
+        }
       }
     ]
   }
