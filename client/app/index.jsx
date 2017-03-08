@@ -30,7 +30,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div class="container">
         <Slider photos={shows} />
         <Display currentPhoto={shows[this.currentInd]} />
       </div>
