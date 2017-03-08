@@ -10,7 +10,8 @@ class Display extends React.Component {
       <div className='Display'>
         <h1>This be it</h1>
         <img src={`..${this.props.currentPhoto.product_image_url}`} />
-        <h2>This be it</h2>
+        <p>{this.props.currentPhoto.episodes} episodes</p>
+        <h2>{this.props.currentPhoto.title}</h2>
       </div>
     )
   }

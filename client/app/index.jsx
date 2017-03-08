@@ -16,7 +16,9 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({currentIndex: this.props.location.query.id - 1});
+    if (this.props.location.query.id) {
+      this.setState({currentIndex: this.props.location.query.id - 1});
+    }
   }
 
   updatePhoto(index) {
